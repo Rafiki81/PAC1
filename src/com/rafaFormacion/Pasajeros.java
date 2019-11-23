@@ -43,11 +43,6 @@ public class Pasajeros {
 
     }
 
-    public void addPasajero(Pasajero pasajero){
-
-        pasajeros.add(pasajero);
-
-    }
 
     public void removePasajero(Pasajero pasajero){
 
@@ -57,6 +52,12 @@ public class Pasajeros {
     public void desordenar(){
 
         Collections.shuffle(pasajeros);
+
+    }
+
+    public void addPasajeros(Pasajero pasajero) {
+
+        pasajeros.add(pasajero);
 
     }
 }

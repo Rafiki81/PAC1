@@ -19,35 +19,32 @@ public class Avion {
         this.plazasAvion = plazasAvion;
     }
 
-    public void embarcar(Pasajeros pasajeros){
+    public void embarcar(Pasajeros pasajeros) {
 
-        HashMap<Integer,Pasajero> embarcados = new HashMap<>();
+        HashMap<Integer, Pasajero> embarcados = new HashMap<>();
 
-        while (pasajeros.tieneMasPasajeros()){
+        while (pasajeros.tieneMasPasajeros()) {
             Pasajero pasajero = pasajeros.siguientePasajero();
 
-            if(pasajero.isTieneTarjeta()){
-                if(!embarcados.containsKey(pasajero.getAsientoAsignado())){
-                    embarcados.put(pasajero.getAsientoAsignado(),pasajero);
+            if (pasajero.isTieneTarjeta()) {
+                if (!embarcados.containsKey(pasajero.getAsientoAsignado())) {
+                    embarcados.put(pasajero.getAsientoAsignado(), pasajero);
                     pasajeros.removePasajero(pasajero);
-                }else{
-                    while(embarcados.containsKey(pasajero.getAsientoAsignado())){
-                        pasajero.setAsientoAsignado((int) (Math.random()*plazasAvion));
-                        pasajeros.removePasajero(pasajero);
+                } else {
+                    while (embarcados.containsKey(pasajero.getAsientoAsignado())) {
+                        pasajero.setAsientoAsignado((int) (Math.random() * plazasAvion) + 1);
                     }
-                }
-            }else{
-                while(embarcados.containsKey(pasajero.getAsientoAsignado())){
-                    pasajero.setAsientoAsignado((int) (Math.random()*plazasAvion));
                     pasajeros.removePasajero(pasajero);
                 }
+
+            } else {
+                while (embarcados.containsKey(pasajero.getAsientoAsignado()) || pasajero.getAsientoAsignado() == 0) {
+                    pasajero.setAsientoAsignado((int) (Math.random() * plazasAvion) + 1);
+                }
+                pasajeros.removePasajero(pasajero);
             }
-            if(!pasajeros.tieneMasPasajeros()){
-                System.out.println(pasajero);
-            }
+            System.out.println(pasajero);
         }
 
     }
-
-
 }
