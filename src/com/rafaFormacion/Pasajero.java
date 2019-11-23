@@ -10,6 +10,10 @@ public class Pasajero {
         this.asientoAsignado = asientoAsignado;
     }
 
+    public Pasajero() {
+
+    }
+
     public String getNombre() {
         return nombre;
     }

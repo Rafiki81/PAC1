@@ -7,6 +7,17 @@ public class Avion {
 
     private int plazasAvion;
 
+    public Avion(int plazasAvion) {
+        this.plazasAvion = plazasAvion;
+    }
+
+    public int getPlazasAvion() {
+        return plazasAvion;
+    }
+
+    public void setPlazasAvion(int plazasAvion) {
+        this.plazasAvion = plazasAvion;
+    }
 
     public void embarcar(Pasajeros pasajeros){
 
