@@ -33,6 +33,11 @@ public class Pasajeros {
 
     }
 
+    public void removePasajero(Pasajero pasajero){
+
+        pasajeros.remove(pasajero);
+    }
+
     public void desordenar(){
 
         Collections.shuffle(pasajeros);
