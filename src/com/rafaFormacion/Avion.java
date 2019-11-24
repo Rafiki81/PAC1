@@ -1,5 +1,6 @@
 package com.rafaFormacion;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -21,30 +22,16 @@ public class Avion {
 
     public void embarcar(Pasajeros pasajeros) {
 
-        HashMap<Integer, Pasajero> embarcados = new HashMap<>();
+        List<Integer> asientos = new ArrayList<>();
 
-        while (pasajeros.tieneMasPasajeros()) {
-            Pasajero pasajero = pasajeros.siguientePasajero();
+        for(int i = 1; i== plazasAvion; i++){
 
-            if (pasajero.isTieneTarjeta()) {
-                if (!embarcados.containsKey(pasajero.getAsientoAsignado())) {
-                    embarcados.put(pasajero.getAsientoAsignado(), pasajero);
-                    pasajeros.removePasajero(pasajero);
-                } else {
-                    while (embarcados.containsKey(pasajero.getAsientoAsignado())) {
-                        pasajero.setAsientoAsignado((int) (Math.random() * plazasAvion) + 1);
-                    }
-                    pasajeros.removePasajero(pasajero);
-                }
+            asientos.add(i);
+            System.out.println(i);
 
-            } else {
-                while (embarcados.containsKey(pasajero.getAsientoAsignado()) || pasajero.getAsientoAsignado() == 0) {
-                    pasajero.setAsientoAsignado((int) (Math.random() * plazasAvion) + 1);
-                }
-                pasajeros.removePasajero(pasajero);
-            }
-            System.out.println(pasajero);
         }
+
+
 
     }
 }
