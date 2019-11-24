@@ -22,36 +22,57 @@ public class Avion {
     public void embarcar(Pasajeros pasajeros) {
 
         List<Integer> asientos = new ArrayList<>();
+        List<Integer> asientosLibres = new ArrayList<>();
 
-        while(pasajeros.tieneMasPasajeros()){
+        for (int i = 1; i <= plazasAvion; i++) {
+            asientosLibres.add(i);
+        }
+
+        while (pasajeros.tieneMasPasajeros()) {
 
             Pasajero pasajero = pasajeros.siguientePasajero();
 
-            if(pasajero.isTieneTarjeta()){
-                if(!asientos.contains(pasajero.getAsientoAsignado())){
-                    System.out.println("El Pasajero " + pasajero.getNombre() + " tendrá el asiento " + pasajero.getAsientoAsignado());
-                    asientos.add(pasajero.getAsientoAsignado());
-                    pasajeros.removePasajero(pasajero);
-                }else{
-                    while(asientos.contains(pasajero.getAsientoAsignado())){
-                        pasajero.setAsientoAsignado((int) (Math.random()*(plazasAvion)+1));
+
+            if (pasajero.isTieneTarjeta()) {
+                if (!asientos.contains(pasajero.getAsientoAsignado())) {
+                    System.out.println("Quedan los siguientes asientos libres: ");
+                    for (Integer i : asientosLibres) {
+                        System.out.println(i);
                     }
                     System.out.println("El Pasajero " + pasajero.getNombre() + " tendrá el asiento " + pasajero.getAsientoAsignado());
                     asientos.add(pasajero.getAsientoAsignado());
+                    asientosLibres.removeIf(n -> (n == pasajero.getAsientoAsignado()));
+                    pasajeros.removePasajero(pasajero);
+                } else {
+                    while (asientos.contains(pasajero.getAsientoAsignado())) {
+                        pasajero.setAsientoAsignado((int) (Math.random() * (plazasAvion) + 1));
+                    }
+                    System.out.println("Quedan los siguientes asientos libres: ");
+                    for (Integer i : asientosLibres) {
+                        System.out.println(i);
+                    }
+                    System.out.println("El Pasajero " + pasajero.getNombre() + " tendrá el asiento " + pasajero.getAsientoAsignado());
+                    asientos.add(pasajero.getAsientoAsignado());
+                    asientosLibres.removeIf(n -> (n == pasajero.getAsientoAsignado()));
                     pasajeros.removePasajero(pasajero);
                 }
 
-            }else{
+            } else {
                 do {
-                    pasajero.setAsientoAsignado((int) (Math.random()*(plazasAvion)+1));
-                } while(asientos.contains(pasajero.getAsientoAsignado()));
+                    pasajero.setAsientoAsignado((int) (Math.random() * (plazasAvion) + 1));
+                } while (asientos.contains(pasajero.getAsientoAsignado()));
+                System.out.println("Quedan los siguientes asientos libres: ");
+                for (Integer i : asientosLibres) {
+                    System.out.println(i);
+                }
                 System.out.println("El Pasajero " + pasajero.getNombre() + " tendrá el asiento " + pasajero.getAsientoAsignado());
                 asientos.add(pasajero.getAsientoAsignado());
+                asientosLibres.removeIf(n -> (n == pasajero.getAsientoAsignado()));
                 pasajeros.removePasajero(pasajero);
             }
 
-        }
 
+        }
 
 
     }
