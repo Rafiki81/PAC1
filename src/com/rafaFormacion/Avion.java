@@ -34,7 +34,7 @@ public class Avion {
                     pasajeros.removePasajero(pasajero);
                 }else{
                     while(asientos.contains(pasajero.getAsientoAsignado())){
-                        pasajero.setAsientoAsignado((int) (Math.random()*(plazasAvion -1)+1));
+                        pasajero.setAsientoAsignado((int) (Math.random()*(plazasAvion)+1));
                     }
                     System.out.println("El Pasajero " + pasajero.getNombre() + " tendrá el asiento " + pasajero.getAsientoAsignado());
                     asientos.add(pasajero.getAsientoAsignado());
@@ -43,7 +43,7 @@ public class Avion {
 
             }else{
                 do {
-                    pasajero.setAsientoAsignado((int) (Math.random()*(plazasAvion -1)+1));
+                    pasajero.setAsientoAsignado((int) (Math.random()*(plazasAvion)+1));
                 } while(asientos.contains(pasajero.getAsientoAsignado()));
                 System.out.println("El Pasajero " + pasajero.getNombre() + " tendrá el asiento " + pasajero.getAsientoAsignado());
                 asientos.add(pasajero.getAsientoAsignado());
