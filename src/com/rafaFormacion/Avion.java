@@ -23,16 +23,39 @@ public class Avion {
 
         List<Integer> asientos = new ArrayList<>();
 
-        for(int i = 1; i== plazasAvion; i++){
+        //for(int i = 1; i<= plazasAvion; i++){
+        //    asientos.add(i);
+        //}
 
-            asientos.add(i);
-
-
-        }
-
-        for(Integer i : asientos){
+        /*for(Integer i : asientos){
             System.out.println(i);
-        }
+        }*/
+
+        do{
+            Pasajero pasajero = pasajeros.siguientePasajero();
+            if(pasajero.isTieneTarjeta()){
+                if(!asientos.contains(pasajero.getAsientoAsignado())){
+                    System.out.println("El Pasajero " + pasajero.getNombre() + " tendrá el asiento " + pasajero.getAsientoAsignado());
+                    asientos.add(pasajero.getAsientoAsignado());
+                    pasajeros.removePasajero(pasajero);
+                }else{
+                    while(asientos.contains(pasajero.getAsientoAsignado())){
+                        pasajero.setAsientoAsignado((int) (Math.random()*(plazasAvion -1)+1));
+                    }
+                    System.out.println("El Pasajero " + pasajero.getNombre() + " tendrá el asiento " + pasajero.getAsientoAsignado());
+                    asientos.add(pasajero.getAsientoAsignado());
+                    pasajeros.removePasajero(pasajero);
+                }
+            }else{
+                while(asientos.contains(pasajero.getAsientoAsignado())){
+                    pasajero.setAsientoAsignado((int) (Math.random()*(plazasAvion -1)+1));
+                }
+                System.out.println("El Pasajero " + pasajero.getNombre() + " tendrá el asiento " + pasajero.getAsientoAsignado());
+                asientos.add(pasajero.getAsientoAsignado());
+                pasajeros.removePasajero(pasajero);
+            }
+
+        }while(pasajeros.tieneMasPasajeros());
 
 
 
