@@ -1,7 +1,6 @@
 package com.rafaFormacion;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class Avion {
@@ -27,8 +26,12 @@ public class Avion {
         for(int i = 1; i== plazasAvion; i++){
 
             asientos.add(i);
-            System.out.println(i);
 
+
+        }
+
+        for(Integer i : asientos){
+            System.out.println(i);
         }
 
 
