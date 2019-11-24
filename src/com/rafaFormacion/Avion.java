@@ -31,7 +31,7 @@ public class Avion {
             System.out.println(i);
         }*/
 
-        do{
+        while(pasajeros.tieneMasPasajeros()) {
             Pasajero pasajero = pasajeros.siguientePasajero();
             if(pasajero.isTieneTarjeta()){
                 if(!asientos.contains(pasajero.getAsientoAsignado())){
@@ -55,7 +55,7 @@ public class Avion {
                 pasajeros.removePasajero(pasajero);
             }
 
-        }while(pasajeros.tieneMasPasajeros());
+        }
 
 
 
