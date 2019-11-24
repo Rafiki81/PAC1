@@ -68,6 +68,13 @@ public class Main {
         //Los desordenamos
         pasajeros.desordenar();
 
+        for(Pasajero pasajero:pasajeros.getPasajeros()){
+
+            System.out.println(pasajero.toString());
+
+        }
+
+
         //Los embarcamos
         avion.embarcar(pasajeros);
 

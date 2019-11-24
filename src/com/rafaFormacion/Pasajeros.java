@@ -30,7 +30,7 @@ public class Pasajeros {
 
     public boolean tieneMasPasajeros(){
 
-        if (pasajeros.size()>0){
+        if (!pasajeros.isEmpty()){
             return true;
         }else  {
             return false;

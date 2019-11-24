@@ -23,16 +23,10 @@ public class Avion {
 
         List<Integer> asientos = new ArrayList<>();
 
-        //for(int i = 1; i<= plazasAvion; i++){
-        //    asientos.add(i);
-        //}
+        while(pasajeros.tieneMasPasajeros()){
 
-        /*for(Integer i : asientos){
-            System.out.println(i);
-        }*/
-
-        while(pasajeros.tieneMasPasajeros()) {
             Pasajero pasajero = pasajeros.siguientePasajero();
+
             if(pasajero.isTieneTarjeta()){
                 if(!asientos.contains(pasajero.getAsientoAsignado())){
                     System.out.println("El Pasajero " + pasajero.getNombre() + " tendrá el asiento " + pasajero.getAsientoAsignado());
@@ -46,6 +40,7 @@ public class Avion {
                     asientos.add(pasajero.getAsientoAsignado());
                     pasajeros.removePasajero(pasajero);
                 }
+
             }else{
                 do {
                     pasajero.setAsientoAsignado((int) (Math.random()*(plazasAvion -1)+1));
